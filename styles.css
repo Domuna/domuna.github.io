@@ -12,3 +12,19 @@
 @media(max-width:370px){.container{width:calc(100% - 30px)}.hero h1{font-size:54px}.eyebrow{font-size:7px;gap:4px}.hero-links{gap:16px}.primary-button{gap:12px;padding:14px}.text-link{font-size:11px}.hero-footer{font-size:7px}.floating-note{display:none}.fake-dropdown{display:none}.mock-stats strong{font-size:8px}.project-featured .project-art{height:295px}.agent-title{font-size:20px}.commerce-art{padding:50px 30px 23px}.network-text{font-size:26px}.contact-buttons{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.js-enhanced .reveal:not(.is-visible){opacity:1;transform:none}.animated-chart-path{stroke-dashoffset:0}}
 @media(max-width:370px){.filters{margin-right:-15px;padding-right:15px}}
+
+
+/* V1.3 · Authentic project screenshots. Keep original chart colors and UI. */
+.project-art.real-screenshot-art{background:#e7eae5;background-image:none;display:flex;align-items:center;justify-content:center;padding:53px 25px 34px}
+.real-screenshot-frame{width:100%;height:100%;max-width:1080px;padding:8px;background:#fff;border:1px solid #d3d8d1;border-radius:6px;box-shadow:0 18px 32px #192e201f;overflow:hidden;transition:transform .35s}
+.real-screenshot-frame img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#fff}
+.project-open:hover .real-screenshot-frame{transform:translateY(-3px)}
+.real-screenshot-art .art-corner-label{background:#f9faf7e8;border:1px solid #dce2d9;color:#536458;border-radius:4px;top:12px;left:15px;padding:5px 8px;letter-spacing:.9px}
+.real-screenshot-art .visual-disclaimer{background:#f9faf7e8;border:1px solid #dce2d9;border-radius:3px;color:#566258;opacity:1;bottom:9px;right:14px;padding:5px 8px;font-size:8px;letter-spacing:.55px}
+.dialog-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 23px}
+.dialog-gallery figure{margin:0;min-width:0}
+.dialog-gallery a{display:block;background:#f2f3f1;border:1px solid #dce2d9;border-radius:5px;padding:7px}
+.dialog-gallery img{display:block;width:100%;height:180px;object-fit:contain;background:#fff}
+.dialog-gallery figcaption{margin-top:7px;font-size:11px;line-height:1.6;color:#728077}
+@media(max-width:640px){.project-art.real-screenshot-art{padding:48px 12px 30px}.real-screenshot-frame{padding:5px}.real-screenshot-art .art-corner-label{font-size:8px}.real-screenshot-art .visual-disclaimer{font-size:7px}.dialog-gallery{grid-template-columns:1fr}.dialog-gallery img{height:auto;max-height:300px;object-fit:contain}}
+@media(prefers-reduced-motion:reduce){.real-screenshot-frame{transition:none}}
