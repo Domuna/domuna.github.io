@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f7f2">
+<title>AI Data Analysis Agent — Case Study | Domuna</title>
+<meta name="description" content="Domuna 的 AI Data Analysis Agent 项目案例：结合 Streamlit、Pandas、DeepSeek API 与 Plotly 的对话式数据分析应用，展示真实运行截图、设计思路与当前局限。">
+<link rel="canonical" href="https://domuna.github.io/projects/ai-data-analysis-agent/">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Data Analysis Agent — Domuna">
+<meta property="og:description" content="真实项目截图、数据分析工作流与 AI 应用开发案例。">
+<meta property="og:url" content="https://domuna.github.io/projects/ai-data-analysis-agent/">
+<meta property="og:image" content="https://domuna.github.io/assets/agent-visualization.png">
+<style>
+:root{color-scheme:light;--bg:#f7f7f2;--ink:#1e2421;--muted:#656e66;--sage:#688b78;--line:#dfe3d9;--paper:#fefefa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit}a:focus-visible{outline:3px solid var(--sage);outline-offset:4px}img{max-width:100%}.wrap{width:min(1130px,calc(100% - 96px));margin-inline:auto}
+nav{border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;min-height:80px;gap:24px}nav a{text-decoration:none;font-weight:600}nav .brand{letter-spacing:.14em;font-size:15px}nav .back{font-size:13px;color:var(--muted);font-weight:500}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:var(--sage);font-size:11px;font-weight:700}.hero{padding:100px 0 48px}.hero h1{font:normal clamp(48px,8vw,106px)/1.05 Georgia,"Times New Roman",serif;letter-spacing:-.06em;max-width:850px;margin:22px 0 24px}.hero p{color:var(--muted);max-width:700px;font-size:18px;margin:0 0 30px}.tags{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 26px}.tags span{border:1px solid #cfd8cb;border-radius:2px;padding:5px 12px;color:#53685a;font-size:12px}.links{display:flex;gap:24px;flex-wrap:wrap}.links a{text-underline-offset:5px;font-size:13px;font-weight:600}
+.hero-image{padding:18px;background:#e8ece7;border:1px solid var(--line);margin:15px 0 60px}.hero-image img{display:block;width:100%;object-fit:contain;background:white;box-shadow:0 15px 30px #1c31221a}.caption{margin-top:10px;font-size:12px;color:var(--muted)}
+section.case{display:grid;grid-template-columns:210px 1fr;gap:65px;padding:56px 0;border-top:1px solid var(--line)}section.case h2{font:normal clamp(27px,3vw,38px)/1.3 Georgia,serif;letter-spacing:-.035em;margin:0 0 18px}section.case p{margin:0 0 16px;max-width:780px;color:#505b52;font-size:15px}.side{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--sage);padding-top:9px;font-weight:700}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:26px 0}.flow div{border:1px solid var(--line);background:var(--paper);padding:16px 15px;min-height:105px}.flow b{display:block;font-size:11px;color:var(--sage);margin-bottom:10px}.flow strong{font-size:14px;line-height:1.5;display:block}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:25px}.gallery figure{margin:0;min-width:0}.gallery a{display:block;background:#e8ece7;padding:10px;border:1px solid var(--line);text-decoration:none}.gallery img{display:block;width:100%;height:240px;object-fit:contain;background:white}.gallery figcaption{font-size:12px;color:var(--muted);padding-top:9px}.gallery .wide{grid-column:1/-1}.gallery .wide img{height:auto;max-height:610px;object-fit:contain}
+.callout{border-left:3px solid var(--sage);padding:13px 20px;background:#eaf0e8;margin-top:25px;font-size:14px;color:#49564c}
+footer{border-top:1px solid var(--line);padding:35px 0 65px;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:12px;color:var(--muted)}footer a{color:var(--ink);text-underline-offset:4px}
+@media(max-width:750px){.wrap{width:calc(100% - 38px)}nav{min-height:65px}.hero{padding:70px 0 28px}.hero h1{font-size:clamp(43px,13vw,74px)}.hero p{font-size:15px}.hero-image{padding:6px;margin-bottom:30px}section.case{display:block;padding:36px 0}.side{margin:0 0 20px}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery{grid-template-columns:1fr;gap:18px}.gallery .wide{grid-column:1}.gallery img,.gallery .wide img{height:auto;max-height:none}.links{gap:18px}footer{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="页面导航"><a class="brand" href="../../">D✳MUNA.</a><a class="back" href="../../#work">← 返回所有项目 / Back to projects</a></nav>
+<main>
+<header class="hero">
+<div class="eyebrow">01 / Featured Project · AI Application × Data Analytics</div>
+<h1>AI Data<br>Analysis Agent.</h1>
+<p>把数据探索、AI 分析报告与自然语言图表生成连接起来，让 CSV 数据分析变成更加直观的交互流程。</p>
+<div class="tags"><span>Python</span><span>Streamlit</span><span>Pandas</span><span>DeepSeek API</span><span>Plotly</span></div>
+<div class="links"><a href="https://github.com/Domuna/AI-Data-Analysis-Agent" target="_blank" rel="noopener noreferrer">GitHub 源代码 ↗</a><a href="#screenshots">查看真实截图 ↓</a></div>
+</header>
+<figure class="hero-image"><img src="../../assets/agent-visualization.png" alt="AI Data Analysis Agent 实际运行界面：基于用户自然语言指令生成的 Plotly 图表"><figcaption class="caption">ACTUAL OUTPUT / 来自公开项目仓库的原始运行截图。不是设计概念图。</figcaption></figure>
+<section class="case" id="problem"><div class="side">01 / The problem</div><div><h2>为什么做这个项目？</h2><p>日常数据探索通常涉及读取文件、查看字段、生成描述统计，再将发现转化为图表。对于不熟悉数据分析工具的使用者，这套流程有一定的操作门槛。</p><p>这个项目尝试用自然语言交互串联常见数据分析环节，让使用者能够更快速地了解数据特征，并提出后续分析问题。</p></div></section>
+<section class="case" id="solution"><div class="side">02 / How it works</div><div><h2>从原始 CSV 到分析结果</h2><p>应用使用 Streamlit 构建交互界面，Pandas 负责读取 CSV 与统计摘要，再调用 DeepSeek API 生成分析文本和绘图代码，最后由 Plotly 在界面中呈现交互式可视化结果。</p><div class="flow"><div><b>01 / INPUT</b><strong>CSV 上传<br>数据预览</strong></div><div><b>02 / EXPLORE</b><strong>字段识别<br>统计摘要</strong></div><div><b>03 / REASON</b><strong>AI 分析<br>自然语言追问</strong></div><div><b>04 / OUTPUT</b><strong>Plotly 图表<br>分析展示</strong></div></div><p>项目对较大数据集采用采样绘图策略，以控制图表渲染数据量；统计摘要与可视化样本应当区分理解。</p></div></section>
+<section class="case" id="screenshots"><div class="side">03 / Actual screenshots</div><div><h2>真实运行结果</h2><p>以下截图直接来自项目的公开 GitHub 仓库。保留了原始程序界面、图表颜色和结果布局，以便更直观地判断它实际上做了什么。</p><div class="gallery">
+<figure class="wide"><a href="../../assets/agent-visualization.png" target="_blank" rel="noopener noreferrer"><img src="../../assets/agent-visualization.png" loading="lazy" alt="对话式生成可视化图表的真实界面"></a><figcaption>01 / 用户通过自然语言请求生成图表，应用呈现 Plotly 可视化结果</figcaption></figure>
+<figure><a href="../../assets/agent-data-preview.png" target="_blank" rel="noopener noreferrer"><img src="../../assets/agent-data-preview.png" loading="lazy" alt="上传 CSV 后的源数据探查真实截图"></a><figcaption>02 / CSV 上传与源数据探查</figcaption></figure>
+<figure><a href="../../assets/agent-report.png" target="_blank" rel="noopener noreferrer"><img src="../../assets/agent-report.png" loading="lazy" alt="大模型生成数据分析报告的真实截图"></a><figcaption>03 / 基于统计摘要生成的 AI 数据分析报告</figcaption></figure>
+</div></div></section>
+<section class="case" id="reflection"><div class="side">04 / Boundaries & next steps</div><div><h2>当前边界与后续迭代</h2><p>这是已经公开源码的原型项目，不是面向不受信任用户开放的生产级在线服务。当前版本的模型生成分析及绘图结果仍需人工核查。</p><p>后续重点会放在代码执行隔离、会话状态管理、输入数据验证及结果可复现测试上。完成这些安全与质量工作后，再考虑开放在线 Demo。</p><div class="callout">目前提供真实运行截图和公开 GitHub 源码，暂不提供在线上传数据和执行 AI 生成代码的体验入口。</div></div></section>
+</main>
+<footer><span>Domuna © 2026 · Build with AI & Data</span><a href="../../#work">返回项目列表 ↑</a></footer>
+</div>
+</body>
+</html>
