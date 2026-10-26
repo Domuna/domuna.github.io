@@ -28,3 +28,6 @@
 .dialog-gallery figcaption{margin-top:7px;font-size:11px;line-height:1.6;color:#728077}
 @media(max-width:640px){.project-art.real-screenshot-art{padding:48px 12px 30px}.real-screenshot-frame{padding:5px}.real-screenshot-art .art-corner-label{font-size:8px}.real-screenshot-art .visual-disclaimer{font-size:7px}.dialog-gallery{grid-template-columns:1fr}.dialog-gallery img{height:auto;max-height:300px;object-fit:contain}}
 @media(prefers-reduced-motion:reduce){.real-screenshot-frame{transition:none}}
+
+/* V1.4 · Independent case study links */
+.featured-case-link{display:flex;justify-content:flex-end;padding:0 0 20px;margin-top:-2px}.featured-case-link a{font-size:12px;line-height:1.6;color:var(--sage-dark);font-weight:650;text-decoration:underline;text-underline-offset:5px}.featured-case-link a:hover{color:var(--ink)}.dialog-case-link{display:inline-block;margin:14px 0 8px;padding:11px 15px;background:#e8eee7;border:1px solid #ccdacb;border-radius:3px;font-size:13px;font-weight:650;text-decoration:none;color:#345642}.dialog-case-link:hover{background:#d7e5d8}
